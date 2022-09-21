@@ -12,12 +12,14 @@ const Feed = ({ navigate }) => {
           'Authorization': `Bearer ${token}`
         }
       })
-        .then(response => response.json())
+        .then(response => 
+          response.json())
         .then(async data => {
           window.localStorage.setItem("token", data.token)
           setToken(window.localStorage.getItem("token"))
           setPosts(data.posts);
         })
+        
     }
   }, [])
     
