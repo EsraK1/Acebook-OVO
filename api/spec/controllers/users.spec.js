@@ -19,7 +19,7 @@ describe("/users", () => {
     test("a user is created", async () => {
       await request(app)
         .post("/users")
-        .send({email: "scarlett@email.com", password: "1234"})
+        .send({email: "scarlett@email.com", password: "1234", name: "scarlett"})
       let users = await User.find()
       let newUser = users[users.length - 1]
       expect(newUser.email).toEqual("scarlett@email.com")
