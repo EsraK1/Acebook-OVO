@@ -8,11 +8,14 @@
     },
     "extends": [
       "eslint:recommended",
-      "plugin:node/recommended"
+      "plugin:node/recommended",
+      "plugin:cypress/recommended"
     ],
     "globals": {
         "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
+        "SharedArrayBuffer": "readonly",
+        "cy": "readonly"
+
     },
     "parserOptions": {
         "ecmaVersion": 2022
