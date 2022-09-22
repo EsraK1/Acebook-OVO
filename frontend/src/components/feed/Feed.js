@@ -6,6 +6,7 @@ const Feed = ({ navigate }) => {
   const [posts, setPosts] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
   const [post, setPost] = useState()
+  const [counter, setCounter] = useState(0)
 
   useEffect(() => {
     if(token) {
@@ -23,7 +24,7 @@ const Feed = ({ navigate }) => {
         })
         
     }
-  }, [])
+  }, [counter])
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -37,6 +38,8 @@ const Feed = ({ navigate }) => {
     })
       .then(response => {
         if(response.status === 201) {
+          setCounter(counter + 1)
+          setPost("")
           navigate('/posts')
         } else {
           alert('oops something is wrong')
