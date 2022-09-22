@@ -5,6 +5,7 @@ import './Feed.css'
 const Feed = ({ navigate }) => {
   const [posts, setPosts] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
+  const [post, setPost] = useState("Your post text goes here")
 
   useEffect(() => {
     if(token) {
@@ -22,12 +23,35 @@ const Feed = ({ navigate }) => {
         })
         
     }
-  }, [])
+  }, [posts])
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    fetch( '/posts', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({ message: post })
+    })
+      .then(response => {
+        if(response.status === 201) {
+          navigate('/posts')
+        } else {
+          alert('oops something is wrong')
+        }
+      })
+  }
     
 
   const logout = () => {
     window.localStorage.removeItem("token")
     navigate('/login')
+  }
+
+  const handlePostChange = (event) => {
+    setPost(event.target.value)
   }
   
   //button back to top
@@ -58,6 +82,13 @@ const Feed = ({ navigate }) => {
             <button onClick={logout}>
               Logout
             </button>
+          <div>
+                <form onSubmit={handleSubmit}>
+                  <textarea id="postarea" name="postarea" rows='4' cols='50' value={ post } onChange={handlePostChange}>
+                  </textarea>
+                  <input id='submit' type="submit" value="Add a post" />
+            </form>
+          </div>
           <div id='feed' role="feed">
           <button onClick= {topFunction} id="myBtn" title="Go to top">Top</button>
               {posts.map(
