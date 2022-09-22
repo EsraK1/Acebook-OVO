@@ -5,7 +5,7 @@ import './Feed.css'
 const Feed = ({ navigate }) => {
   const [posts, setPosts] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
-  const [post, setPost] = useState("Your post text goes here")
+  const [post, setPost] = useState()
 
   useEffect(() => {
     if(token) {
@@ -23,7 +23,7 @@ const Feed = ({ navigate }) => {
         })
         
     }
-  }, [posts])
+  }, [])
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -84,8 +84,7 @@ const Feed = ({ navigate }) => {
             </button>
           <div>
                 <form onSubmit={handleSubmit}>
-                  <textarea id="postarea" name="postarea" rows='4' cols='50' value={ post } onChange={handlePostChange}>
-                  </textarea>
+                  <textarea id="postarea" name="postarea" rows='4' cols='50' value={ post } onChange={handlePostChange} placeholder="Write your post here"></textarea>
                   <input id='submit' type="submit" value="Add a post" />
             </form>
           </div>
