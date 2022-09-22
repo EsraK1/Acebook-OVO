@@ -23,7 +23,7 @@ const Feed = ({ navigate }) => {
         })
         
     }
-  }, [posts])
+  }, [])
 
   const handleSubmit = async (event) => {
     event.preventDefault();
