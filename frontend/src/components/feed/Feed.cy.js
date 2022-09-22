@@ -23,4 +23,17 @@ describe("Feed", () => {
       .and('contain.text', "Hello again, world")
     })
   })
+  
+  it("Adding a post buton test", () => {
+    window.localStorage.setItem("token", "fakeToken")
+    cy.mount(<Feed navigate={navigate}/>)
+
+    cy.intercept('POST', '/posts', { message: "OK" }).as("addedPostReq")
+    
+    cy.get("#postarea").type("fake post text 123");
+    cy.get("#submit").click();
+    cy.wait('@addedPostReq').then( interception => {
+      expect(interception.response.body.message).to.eq("OK")
+    })
+  })
 })
