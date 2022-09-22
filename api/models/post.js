@@ -2,7 +2,10 @@ const mongoose = require("mongoose");
 
 const PostSchema = new mongoose.Schema({
   message: String,
-  datePosted: Date
+  datePosted: {
+    type: Date,
+    default: () => Date.now(),
+  },
 });
 // Update the route? That works with postman
 // Create some tests to check this works for the model file and controller
