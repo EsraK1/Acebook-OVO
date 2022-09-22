@@ -22,15 +22,15 @@ const Feed = ({ navigate }) => {
         })
         
     }
-  }, [])
+  }, [posts])
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     fetch( '/posts', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({ message: post })
     })
