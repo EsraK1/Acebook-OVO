@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const User = require("./user");
 
 const PostSchema = new mongoose.Schema({
   message: String,
@@ -6,6 +7,10 @@ const PostSchema = new mongoose.Schema({
     type: Date,
     default: () => Date.now(),
   },
+  postauthor: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: User,
+  }
 });
 // Update the route? That works with postman
 // Create some tests to check this works for the model file and controller

@@ -37,7 +37,7 @@ const Feed = ({ navigate }) => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       },
-      body: JSON.stringify({ message: post, user_id: userId })
+      body: JSON.stringify({ message: post, postauthor: userId })
     })
       .then(response => {
         if(response.status === 201) {
@@ -84,7 +84,7 @@ const Feed = ({ navigate }) => {
     if(token) {
       return(
         <>
-          <h2>Posts</h2>
+          <h2>Posts:</h2>
             <button onClick={logout}>
               Logout
             </button>
