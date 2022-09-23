@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import Post from '../post/Post'
 import './Feed.css'
+import jwt_decode from "jwt-decode";
+
 
 const Feed = ({ navigate }) => {
   const [posts, setPosts] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
   const [post, setPost] = useState()
   const [counter, setCounter] = useState(0)
+  const userId = jwt_decode(token).user_id
 
   useEffect(() => {
     if(token) {
@@ -34,7 +37,7 @@ const Feed = ({ navigate }) => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       },
-      body: JSON.stringify({ message: post })
+      body: JSON.stringify({ message: post, user_id: userId })
     })
       .then(response => {
         if(response.status === 201) {
@@ -88,8 +91,9 @@ const Feed = ({ navigate }) => {
           <div>
                 <form onSubmit={handleSubmit}>
                   <textarea id="postarea" name="postarea" rows='4' cols='50' value={ post } onChange={handlePostChange} placeholder="Write your post here"></textarea>
+
                   <input id='submit' type="submit" value="Add a post" />
-            </form>
+                </form>
           </div>
           <div id='feed' role="feed">
           <button onClick= {topFunction} id="myBtn" title="Go to top">Top</button>

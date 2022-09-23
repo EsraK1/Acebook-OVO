@@ -16,7 +16,7 @@ describe("/tokens", () => {
   test("a token is returned when creds are valid", async () => {
     let response = await request(app)
       .post("/tokens")
-      .send({email: "test@test.com", password: "12345678", username: "test"})
+      .send({email: "test@test.com", password: "12345678"})
     expect(response.status).toEqual(201)
     expect(response.body.token).not.toEqual(undefined)
     expect(response.body.message).toEqual("OK")
