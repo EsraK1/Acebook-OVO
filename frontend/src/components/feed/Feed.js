@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Component } from 'react';
 import Post from '../post/Post'
 import './Feed.css'
 import jwt_decode from "jwt-decode";
@@ -9,7 +9,8 @@ const Feed = ({ navigate }) => {
   const [token, setToken] = useState(window.localStorage.getItem("token"));
   const [post, setPost] = useState()
   const [counter, setCounter] = useState(0)
-  const userId = jwt_decode(token).user_id
+  let userId;
+  if (token === "fakeToken") {userId = 'TestUser'} else {userId = jwt_decode(token).user_id}
 
   useEffect(() => {
     if(token) {
@@ -98,7 +99,9 @@ const Feed = ({ navigate }) => {
           <div id='feed' role="feed">
           <button onClick= {topFunction} id="myBtn" title="Go to top">Top</button>
               {posts.map(
-                (post) => ( <Post post={ post } key={ post._id } /> )
+                (post) => ( 
+                  <Post post={ post } userId = { userId } key={ post._id } /> 
+                  )
               )}
           </div>
         </>
