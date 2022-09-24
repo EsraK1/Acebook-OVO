@@ -42,7 +42,7 @@ const Post = (props) => {
 
   function refreshPage(){
     window.location.reload();
-   }
+    }
 
   return(
       <article data-cy="post" className='post' key={ props.post._id }>
