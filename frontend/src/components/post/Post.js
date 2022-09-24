@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import jwt_decode from "jwt-decode";
 
 
 // changed the input of just 'post' to 'props' which contains all the properties of the Post element in Feed.js
@@ -15,7 +14,22 @@ const Post = ( props ) => {
     }); 
 
   // If the userId matches the postauthor._id, the delete button is shown
-  const deleteBtn = (() => {if (props.userId === props.post.postauthor._id) {return <button style={{float:'right'}}>Delete this post</button>}})
+  const deleteBtn = (() => {if (props.userId === props.post.postauthor._id) {return <button onClick={deleteBtnClick} style={{float:'right'}}>Delete this post</button>}})
+
+  const deleteBtnClick = async (event) => {
+    event.preventDefault();
+    fetch( '/posts', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${props.token}`
+      },
+      body: JSON.stringify({ _id: props.post._id})
+    })
+      .then(response => console.log(response))
+  }
+
+
 
   return(
       <article data-cy="post" className='post' key={ props.post._id }>

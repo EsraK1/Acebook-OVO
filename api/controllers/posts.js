@@ -22,6 +22,15 @@ const PostsController = {
       res.status(201).json({ message: 'OK', token: token });
     });
   },
-};
+  Delete: (req, res) => {
+    Post.findByIdAndRemove(req.body._id, async function (err, docs) {
+      if (err){
+          throw err
+      }
+      else{
+        res.status(200).json({message:"Removed User"});
+      }
+  })}
+}
 
 module.exports = PostsController;

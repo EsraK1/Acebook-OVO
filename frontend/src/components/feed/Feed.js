@@ -10,7 +10,7 @@ const Feed = ({ navigate }) => {
   const [post, setPost] = useState()
   const [counter, setCounter] = useState(0)
   let userId;
-  if (token === "fakeToken") {userId = 'TestUser'} else {userId = jwt_decode(token).user_id}
+  if (token === "fakeToken") {userId = 'TestUser'} else {userId = jwt_decode(token).user_id} // Means that tests won't use jwt_decode and therefore won't through errors
 
   useEffect(() => {
     if(token) {
@@ -100,7 +100,7 @@ const Feed = ({ navigate }) => {
           <button onClick= {topFunction} id="myBtn" title="Go to top">Top</button>
               {posts.map(
                 (post) => ( 
-                  <Post post={ post } userId = { userId } key={ post._id } /> 
+                  <Post post={ post } userId = { userId } token = { token } key={ post._id } /> 
                   )
               )}
           </div>
