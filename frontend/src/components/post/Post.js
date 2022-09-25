@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {  } from 'react';
 
 const Post = (props) => {
 
@@ -30,6 +30,11 @@ const Post = (props) => {
       }).then(refreshPage())
   }
 
+  const likeBtn = () => {
+    if (props.post.likes.includes(props.userId)) {return (<button style={{float: 'right', border: 'none', 'background-color': 'transparent'}} >{props.post.likes.length} likes: You have liked this post</button>)} else {
+      return(<button onClick={likeBtnSubmit} style={{float: 'right'}}>{props.post.likes.length} likes: Click here to like this post</button>)
+    }
+  }
 
   const deleteBtnAppears = (() => {if (props.post.postauthor._id===props.user_id) {return <button onClick= {deleteFunction} id={"deleteBtn"} title={"Delete post"}>Delete Post</button>}})
 
