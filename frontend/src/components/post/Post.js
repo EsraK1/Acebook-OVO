@@ -50,6 +50,7 @@ const Post = (props) => {
         <h2 className="post-author">{ props.post.postauthor.username }</h2>
         <p >{ props.post.message }</p>
         {deleteBtnAppears()}
+        {likeBtn()}
       </article>
   )
 }

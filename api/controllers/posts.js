@@ -31,5 +31,16 @@ const PostsController = {
       }
     }) }
 };
+=======
+    Post.findByIdAndRemove(req.body._id, async function (err, docs) {
+      if (err){
+          throw err
+      }
+      else{
+        res.status(200).json({message:"Removed User"});
+      }
+  })}
+}
+>>>>>>> b0a4739 (Delete route from frontend post set up)
 
 module.exports = PostsController;
