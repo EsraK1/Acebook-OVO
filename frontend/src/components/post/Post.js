@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {  } from 'react';
 
 
 // changed the input of just 'post' to 'props' which contains all the properties of the Post element in Feed.js
@@ -29,13 +29,37 @@ const Post = ( props ) => {
       .then(response => console.log(response))
   }
 
+  const likeBtn = () => {
+    if (props.post.likes.includes(props.userId)) {return (<button style={{float: 'right', border: 'none', 'background-color': 'transparent'}} >{props.post.likes.length} likes: You have liked this post</button>)} else {
+      return(<button onClick={likeBtnSubmit} style={{float: 'right'}}>{props.post.likes.length} likes: Click here to like this post</button>)
+    }
+  }
 
+  const likeBtnSubmit = async () => {
+      fetch( '/posts', {
+        method: 'put',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${props.token}`
+        },
+        body: JSON.stringify({ _id: props.post._id, userId: props.userId })
+      })
+        .then(response => {
+          if(response.status === 200) {
+            console.log(response)
+          } else {
+            alert('oops something is wrong')
+          }
+        })
+    }
+  
 
   return(
       <article data-cy="post" className='post' key={ props.post._id }>
-        <h2 className="props.-date">{ date }</h2>
+        <h2 className="post-date">{ date }</h2>
         <h2 className="post-author">{ props.post.postauthor.username }</h2>
-        <p>{ props.post.message }</p>
+        <p >{ props.post.message }</p>
+        {likeBtn()}
         {deleteBtn()}
       </article>
   )
