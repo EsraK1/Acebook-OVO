@@ -22,6 +22,13 @@ const PostsController = {
       res.status(201).json({ message: 'OK', token: token });
     });
   },
+  Update: async (req, res) => {
+    Post.findOneAndUpdate(
+      { _id: req.body._id },
+      { $push: { likes: req.body.userId } }
+    ).exec()
+    res.status(200).json({ message: 'like added'})
+  }
 };
 
 module.exports = PostsController;
