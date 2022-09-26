@@ -27,6 +27,7 @@ const Post = ( props ) => {
       body: JSON.stringify({ _id: props.post._id})
     })
       .then(response => console.log(response))
+      .then(() => {props.counterChanger(prevState => ({count: prevState.counter + 1}))})
   }
 
   const likeBtn = () => {
@@ -51,11 +52,13 @@ const Post = ( props ) => {
             alert('oops something is wrong')
           }
         })
+        .then(() => {props.counterChanger(prevState => ({count: prevState.counter + 1}))})
     }
   
 
   return(
       <article data-cy="post" className='post' key={ props.post._id }>
+        <img src="https://img.freepik.com/premium-vector/cute-duck-egg-cartoon-mascot-logo-design_92637-190.jpg" alt="User logo"/>
         <h2 className="post-date">{ date }</h2>
         <h2 className="post-author">{ props.post.postauthor.username }</h2>
         <p >{ props.post.message }</p>
