@@ -27,11 +27,11 @@ const Post = ( props ) => {
       body: JSON.stringify({ _id: props.post._id})
     })
       .then(response => console.log(response))
-      .then(() => {props.counterChanger(prevState => ({count: prevState.counter + 1}))})
+      .then(props.counterChanger(prevState => ({count: prevState.counter + 1})))
   }
 
   const likeBtn = () => {
-    if (props.post.likes.includes(props.userId)) {return (<button style={{float: 'right', border: 'none', 'background-color': 'transparent'}} >{props.post.likes.length} likes: You have liked this post</button>)} else {
+    if (props.post.likes.includes(props.userId)) {return (<button style={{float: 'right', border: 'none', 'backgroundColor': 'transparent'}} >{props.post.likes.length} likes: You have liked this post</button>)} else {
       return(<button onClick={likeBtnSubmit} style={{float: 'right'}}>{props.post.likes.length} likes: Click here to like this post</button>)
     }
   }
