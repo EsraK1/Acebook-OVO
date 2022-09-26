@@ -48,7 +48,6 @@ const Post = ( props ) => {
         },
         body: JSON.stringify({ _id: props.post._id, userId: props.userId })
       })
-    
         .then(response => {
           if(response.status === 200) {
             console.log(response)
@@ -56,7 +55,7 @@ const Post = ( props ) => {
             alert('oops something is wrong')
           }
         })
-    
+    }
 
   return(
       <article data-cy="post" className='post' key={ props.post._id }>
@@ -68,8 +67,6 @@ const Post = ( props ) => {
       </article>
   )
 }
-}
-
 
 // Try adding an unlike feature so the same button can be used to like and unliked by a user
 // We need to think about how the user id will be removed from the array for likes when 'unliking'
