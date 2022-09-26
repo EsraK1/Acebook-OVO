@@ -12,7 +12,7 @@ describe("Post", () => {
 
     cy.intercept('PUT', '/posts', { message: "OK" }).as("addLikeReq")
 
-    cy.get('[id="likeButton"]').click();
+    cy.get('[id="likeButton]').click();
     cy.wait('@addLikeReq').then (interception => {
       expect(interception.response.body.message).to.eq("OK")
     })
