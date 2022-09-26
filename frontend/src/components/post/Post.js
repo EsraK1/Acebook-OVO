@@ -54,7 +54,6 @@ const Post = (props) => {
       </article>
   )
 }
-}
 
 // Try adding an unlike feature so the same button can be used to like and unliked by a user
 // We need to think about how the user id will be removed from the array for likes when 'unliking'
