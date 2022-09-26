@@ -23,14 +23,13 @@ const PostsController = {
     });
   },
   Delete: (req, res) => {
-    Post.findByIdAndRemove(req.body._id, async function (err, docs) {
-      if (err){
-          throw err
+    Post.deleteOne({_id: req.body._id}, (err) => {
+      if (err) {
+        throw err;
+      } else {
+        res.status(201).json({ message: 'OK' });
       }
-      else{
-        res.status(200).json({message:"Removed User"});
-      }
-  })},
+    }) },
 
   Update: async (req, res) => {
     Post.findOneAndUpdate(
@@ -39,6 +38,7 @@ const PostsController = {
     ).exec()
     res.status(200).json({ message: 'like added'})
   }
+
 };
 
 module.exports = PostsController;

@@ -58,6 +58,22 @@ const Post = ( props ) => {
           }
         })
     }
+      body: JSON.stringify({ _id: props.post._id })
+    })
+      .then(response => {
+        if(response.status === 201) {
+          console.log('OK')
+        } else {
+          alert('oops something is wrong')
+        }
+      })
+  }
+
+  const deleteBtnAppears = () => {
+    if (props.post.postauthor._id === props.user_id) {
+      return <button onClick= {deleteFunction} id="deleteBtn" title="Delete post">Delete Post</button>
+    }
+  }
 
   return(
       <article data-cy="post" className='post' key={ props.post._id }>
@@ -65,7 +81,7 @@ const Post = ( props ) => {
         <h2 className="post-author">{ props.post.postauthor.username }</h2>
         <p >{ props.post.message }</p>
         {likeBtn()}
-        {deleteBtn()}
+        {deleteBtnAppears()}
       </article>
   )
 }
