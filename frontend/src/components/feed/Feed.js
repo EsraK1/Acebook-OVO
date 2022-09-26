@@ -98,7 +98,7 @@ const Feed = ({ navigate }) => {
           <div id='feed' role="feed">
           <button onClick= {topFunction} id="myBtn" title="Go to top">Top</button>
               {posts.map(
-                (post) => ( <Post post={ post } key={ post._id } /> )
+                (post) => ( <Post post={ post } key={ post._id } userId={ userId } token={ token } /> )
               )}
           </div>
         </>
