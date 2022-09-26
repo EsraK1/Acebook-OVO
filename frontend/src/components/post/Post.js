@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './Post.css';
 
 
 // changed the input of just 'post' to 'props' which contains all the properties of the Post element in Feed.js
@@ -29,8 +30,9 @@ const Post = ( props ) => {
   }
 
   const likeBtn = () => {
-    if (props.post.likes.includes(props.userId)) {return (<button id={'likeButton'} style={{float: 'right', border: 'none', 'background-color': 'transparent'}} >{props.post.likes.length} likes: You have liked this post</button>)} else {
-        return(<button id={'likeButton'} onClick={() =>{likeBtnSubmit() ; refreshPage()}} style={{float: 'right'}}>{props.post.likes.length} likes: Click here to like this post</button>)
+    if (props.post.likes.includes(props.userId)) {return (<button id={'likeButton'} className='like'  >{props.post.likes.length} ♥︎</button>)} else { 
+      return(<button id={'likeButton'} onClick={() =>{likeBtnSubmit() ; refreshPage()}} className='like'>{props.post.likes.length} ♥︎</button>)
+        
     }
   }
 
