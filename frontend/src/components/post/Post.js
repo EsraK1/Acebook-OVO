@@ -1,4 +1,4 @@
-import React, {  } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Post = (props) => {
 
@@ -31,8 +31,8 @@ const Post = (props) => {
   }
 
   const likeBtn = () => {
-    if (props.post.likes.includes(props.userId)) {return (<button style={{float: 'right', border: 'none', 'background-color': 'transparent'}} >{props.post.likes.length} likes: You have liked this post</button>)} else {
-      return(<button onClick={likeBtnSubmit} style={{float: 'right'}}>{props.post.likes.length} likes: Click here to like this post</button>)
+    if (props.post.likes.includes(props.userId)) {return (<button id={'likeButton'} style={{float: 'right', border: 'none', 'background-color': 'transparent'}} >{props.post.likes.length} likes: You have liked this post</button>)} else {
+        return(<button id={'likeButton'} onClick={() =>{likeBtnSubmit() ; refreshPage()}} style={{float: 'right'}}>{props.post.likes.length} likes: Click here to like this post</button>)
     }
   }
 
@@ -51,5 +51,11 @@ const Post = (props) => {
       </article>
   )
 }
+}
+
+
+// Try adding an unlike feature so the same button can be used to like and unliked by a user
+// We need to think about how the user id will be removed from the array for likes when 'unliking'
+// maybe try reengineer the '#likeBtnSubmit' above to make it unlike posts
 
 export default Post;
