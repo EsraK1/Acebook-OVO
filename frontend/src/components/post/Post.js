@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './Post.css'
 
 const Post = (props) => {
@@ -28,6 +28,7 @@ const Post = (props) => {
           alert('oops something is wrong')
         }
       })
+      .then(() => {props.counterChanger(prevState => ({count: prevState.counter + 1}))})
   }
 
   const date = new Date(props.post.datePosted).toLocaleDateString("en-uk", {
@@ -55,20 +56,16 @@ const Post = (props) => {
         } else {
           alert('oops something is wrong')
         }
-      }).then(refreshPage())
+      }).then(() => {props.counterChanger(prevState => ({count: prevState.counter + 1}))})
   }
 
   const likeBtn = () => {
     if (props.post.likes.includes(props.userId)) {return (<button id={'likeButton'} className='like'  >{props.post.likes.length} ♥︎</button>)} else { 
-      return(<button id={'likeButton'} onClick={() =>{likeBtnSubmit() ; refreshPage()}} className='like'>{props.post.likes.length} ♥︎</button>)
+      return(<button id={'likeButton'} onClick={() =>{likeBtnSubmit()}} className='like'>{props.post.likes.length} ♥︎</button>)
         
     }
   }
 
-
-  function refreshPage(){ 
-    window.location.reload(); 
-  }
 
   const likeBtnSubmit = async () => { 
       fetch( '/posts/like/', {
@@ -86,6 +83,7 @@ const Post = (props) => {
             alert('oops something is wrong')
           }
         })
+        .then(() => {props.counterChanger(prevState => ({count: prevState.counter + 1}))})
     }
 
   const deleteBtnAppears = (() => {if (props.post.postauthor._id===props.userId) {return <button onClick= {deleteFunction} id={"deleteBtn"} title={"Delete post"}>Delete Post</button>}})

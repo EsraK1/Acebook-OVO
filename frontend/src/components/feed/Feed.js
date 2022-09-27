@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import Post from '../post/Post'
 import './Feed.css'
 import jwt_decode from "jwt-decode";
@@ -99,7 +99,7 @@ const Feed = ({ navigate }) => {
           <div id='feed' role="feed">
           <button onClick= {topFunction} id="myBtn" title="Go to top">Top</button>
               {posts.map(
-                (post) => ( <Post post={ post } key={ post._id } token={ token } userId={userId} /> )
+                (post) => ( <Post post={ post } key={ post._id } token={ token } userId={userId} counterChanger={ setCounter }/> )
               )}
           </div>
         </>
