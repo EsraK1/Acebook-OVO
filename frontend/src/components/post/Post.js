@@ -5,6 +5,12 @@ const Post = (props) => {
 
   const [comment, setComment] = useState();
 
+  const avatarDisplay = () => {
+    if (props.post.postauthor.img === undefined) { return (
+      <img src="https://img.freepik.com/premium-vector/cute-duck-egg-cartoon-mascot-logo-design_92637-190.jpg" alt="Default avatar duck"/>)
+    } else {return (<img src={props.post.postauthor.img} alt="User's avatar"/>)}
+  }
+
   // see puts 
   const handleCommentChange = (event) => {
     setComment(event.target.value)
@@ -86,17 +92,17 @@ const Post = (props) => {
         .then(() => {props.counterChanger(prevState => ({count: prevState.counter + 1}))})
     }
 
-  const deleteBtnAppears = (() => {if (props.post.postauthor._id===props.userId) {return <button onClick= {deleteFunction} id={"deleteBtn"} title={"Delete post"}>Delete Post</button>}})
+  const deleteBtnAppears = (() => {if (props.post.postauthor._id===props.userId) {return <button onClick= {deleteFunction} className={"like"} id={"deleteBtn"} title={"Delete post"}>Delete Post</button>}})
 
 
     function commentList(){
       if(props.post.comments.length > 0) {
-        let john = props.post.comments.map((element, index) => (
+        let comment = props.post.comments.map((element, index) => (
           <p key={ element.user_id + props.post._id + index }>
-           { element.user_comment }
+           "{ element.user_comment }"
           </p>
       ))
-      return john 
+      return comment 
       }
     }
 
@@ -105,12 +111,13 @@ const Post = (props) => {
     // )}
   return(
       <article data-cy="post" className='post' key={ props.post._id }>
-        <h2 className="post-date">{ date }</h2>
+        {avatarDisplay()}
         <h2 className="post-author">{ props.post.postauthor.username }</h2>
+        <h2 className="post-date">{ date }</h2>
         <p >{ props.post.message }</p>
         {deleteBtnAppears()}
         {likeBtn()}
-
+        
         <form onSubmit={handleSubmit}>
           <textarea id="postarea" name="postarea" rows='4' cols='50' value={ comment } onChange={handleCommentChange} placeholder="Write your comment here"></textarea>
           <input id='submit' type="submit" value="Add a post" />
