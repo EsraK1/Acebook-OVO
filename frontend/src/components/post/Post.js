@@ -13,10 +13,7 @@ const Post = ( props ) => {
     day: "numeric",
     }); 
 
-  // If the userId matches the postauthor._id, the delete button is shown
-  const deleteBtn = (() => {if (props.userId === props.post.postauthor._id) {return <button onClick={deleteBtnClick} style={{float:'right'}}>Delete this post</button>}})
-
-  const deleteBtnClick = async (event) => {
+  const deleteFunction = async (event) => {
     event.preventDefault();
     fetch( '/posts', {
       method: 'DELETE',
@@ -24,9 +21,15 @@ const Post = ( props ) => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${props.token}`
       },
-      body: JSON.stringify({ _id: props.post._id})
+      body: JSON.stringify({ _id: props.post._id })
     })
-      .then(response => console.log(response))
+      .then(response => {
+        if(response.status === 201) {
+          console.log('OK')
+        } else {
+          alert('oops something is wrong')
+        }
+      }).then(refreshPage())
   }
 
   const likeBtn = () => {
@@ -58,35 +61,15 @@ const Post = ( props ) => {
           }
         })
     }
-      body: JSON.stringify({ _id: props.post._id })
-    })
-      .then(response => {
-        if(response.status === 201) {
-          console.log('OK')
-        } else {
-          alert('oops something is wrong')
-        }
-      }).then(refreshPage())
-  }
 
-  const likeBtn = () => {
-    if (props.post.likes.includes(props.userId)) {return (<button id={'likeButton'} style={{float: 'right', border: 'none', 'background-color': 'transparent'}} >{props.post.likes.length} likes: You have liked this post</button>)} else {
-        return(<button id={'likeButton'} onClick={() =>{likeBtnSubmit() ; refreshPage()}} style={{float: 'right'}}>{props.post.likes.length} likes: Click here to like this post</button>)
-    }
-  }
+  const deleteBtnAppears = (() => {if (props.post.postauthor._id===props.userId) {return <button onClick= {deleteFunction} id={"deleteBtn"} title={"Delete post"}>Delete Post</button>}})
 
-  const deleteBtnAppears = (() => {if (props.post.postauthor._id===props.user_id) {return <button onClick= {deleteFunction} id={"deleteBtn"} title={"Delete post"}>Delete Post</button>}})
-
-  function refreshPage(){
-    window.location.reload();
-    }
 
   return(
       <article data-cy="post" className='post' key={ props.post._id }>
         <h2 className="post-date">{ date }</h2>
         <h2 className="post-author">{ props.post.postauthor.username }</h2>
         <p >{ props.post.message }</p>
-        {likeBtn()}
         {deleteBtnAppears()}
         {likeBtn()}
       </article>
