@@ -64,7 +64,6 @@ const Post = ( props ) => {
 
   const deleteBtnAppears = (() => {if (props.post.postauthor._id===props.userId) {return <button onClick= {deleteFunction} id={"deleteBtn"} title={"Delete post"}>Delete Post</button>}})
 
-
   return(
       <article data-cy="post" className='post' key={ props.post._id }>
         <h2 className="post-date">{ date }</h2>
