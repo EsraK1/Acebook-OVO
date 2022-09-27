@@ -38,11 +38,6 @@ const Post = (props) => {
     }
   }
 
-  const deleteBtnAppears = (() => {if (props.post.postauthor._id===props.user_id) {return <button onClick= {deleteFunction} id={"deleteBtn"} title={"Delete post"}>Delete Post</button>}})
-
-  function refreshPage(){
-    window.location.reload();
-    }
 
   return(
       <article data-cy="post" className='post' key={ props.post._id }>
