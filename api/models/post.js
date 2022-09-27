@@ -11,7 +11,10 @@ const PostSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: User,
   },
-  likes: [String] //stores the username
+  likes: [String], //stores the username
+  comments: {
+    type: [Object],
+  },
 });
 // Update the route? That works with postman
 // Create some tests to check this works for the model file and controller

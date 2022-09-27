@@ -1,9 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import './Post.css';
+import './Post.css'
 
+const Post = (props) => {
 
-// changed the input of just 'post' to 'props' which contains all the properties of the Post element in Feed.js
-const Post = ( props ) => {
+  const [comment, setComment] = useState();
+
+  // see puts 
+  const handleCommentChange = (event) => {
+    setComment(event.target.value)
+  }
+
+  // see puts
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    fetch( '/posts/comment/', {
+      method: 'put',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${props.token}`
+      },
+      body: JSON.stringify({ _id: props.post._id, user_id: props.userId, user_comment: comment })
+    })
+      .then(response => {
+        if(response.status === 200) {
+          console.log("received response")
+        } else {
+          alert('oops something is wrong')
+        }
+      })
+  }
+
   const date = new Date(props.post.datePosted).toLocaleDateString("en-uk", {
     hour: "2-digit",
     minute: "2-digit",
@@ -45,7 +71,7 @@ const Post = ( props ) => {
   }
 
   const likeBtnSubmit = async () => { 
-      fetch( '/posts', {
+      fetch( '/posts/like/', {
         method: 'put',
         headers: {
           'Content-Type': 'application/json',
@@ -64,6 +90,21 @@ const Post = ( props ) => {
 
   const deleteBtnAppears = (() => {if (props.post.postauthor._id===props.userId) {return <button onClick= {deleteFunction} id={"deleteBtn"} title={"Delete post"}>Delete Post</button>}})
 
+
+    function commentList(){
+      if(props.post.comments.length > 0) {
+        let john = props.post.comments.map((element, index) => (
+          <p key={ element.user_id + props.post._id + index }>
+           { element.user_comment }
+          </p>
+      ))
+      return john 
+      }
+    }
+
+    // {posts.map(
+    //   (post) => ( <Post post={ post } key={ post._id } userId={ userId } token={ token } /> )
+    // )}
   return(
       <article data-cy="post" className='post' key={ props.post._id }>
         <h2 className="post-date">{ date }</h2>
@@ -71,6 +112,14 @@ const Post = ( props ) => {
         <p >{ props.post.message }</p>
         {deleteBtnAppears()}
         {likeBtn()}
+
+        <form onSubmit={handleSubmit}>
+          <textarea id="postarea" name="postarea" rows='4' cols='50' value={ comment } onChange={handleCommentChange} placeholder="Write your comment here"></textarea>
+          <input id='submit' type="submit" value="Add a post" />
+        </form>
+
+        { commentList() }
+
       </article>
   )
 }
@@ -80,3 +129,8 @@ const Post = ( props ) => {
 // maybe try reengineer the '#likeBtnSubmit' above to make it unlike posts
 
 export default Post;
+
+
+
+
+
