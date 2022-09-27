@@ -98,9 +98,12 @@ const Post = (props) => {
     function commentList(){
       if(props.post.comments.length > 0) {
         let comment = props.post.comments.map((element, index) => (
-          <p key={ element.user_id + props.post._id + index }>
-           "{ element.user_comment }"
-          </p>
+          <>
+            <h3>Comments:</h3>
+            <p key={ element.user_id + props.post._id + index }>
+            "{ element.user_comment }"
+            </p>
+          </>
       ))
       return comment 
       }
