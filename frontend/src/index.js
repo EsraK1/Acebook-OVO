@@ -6,10 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <BrowserRouter>
-    <React.StrictMode>
+    <React.StrictMode> 
       <App />
     </React.StrictMode>
   </BrowserRouter>
