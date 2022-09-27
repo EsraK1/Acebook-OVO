@@ -6,7 +6,7 @@ const Post = (props) => {
   const [comment, setComment] = useState();
 
   const avatarDisplay = () => {
-    if (props.post.postauthor.img === undefined) { return (
+    if (props.post.postauthor.img === "") { return (
       <img src="https://img.freepik.com/premium-vector/cute-duck-egg-cartoon-mascot-logo-design_92637-190.jpg" alt="Default avatar duck"/>)
     } else {return (<img src={props.post.postauthor.img} alt="User's avatar"/>)}
   }
