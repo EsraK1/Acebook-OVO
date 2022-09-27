@@ -23,13 +23,22 @@ const PostsController = {
     });
   },
   Delete: (req, res) => {
-     Post.deleteOne({_id: req.body._id}, (err) => {
+    Post.deleteOne({_id: req.body._id}, (err) => {
       if (err) {
         throw err;
       } else {
         res.status(201).json({ message: 'OK' });
       }
-    }) }
+    }) },
+
+  Update: async (req, res) => {
+    Post.findOneAndUpdate(
+      { _id: req.body._id },
+      { $push: { likes: req.body.userId } }
+    ).exec()
+    res.status(200).json({ message: 'like added'})
+  }
+
 };
 
 module.exports = PostsController;
