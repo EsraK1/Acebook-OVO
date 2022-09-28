@@ -1,3 +1,20 @@
+body {
+  margin:0;
+  padding:0;
+}
+
+.post-date {
+  font-size: 1.0rem;
+  float: right;
+  transform: translate(100px, 10px);
+}
+
+.post-author {
+  float: right;
+  font-size: 1.3rem;
+  transform: translate(10px, -10px);
+}
+
 #myBtn {
     display: none; /* Hidden by default */
     position: fixed; /* Fixed/sticky position */
@@ -6,27 +23,37 @@
     z-index: 99; /* Make sure it does not overlap */
     border: none; /* Remove borders */
     outline: none; /* Remove outline */
-    background-color: red; /* Set a background color */
+    background-color:rgb(43,193,14);
     color: white; /* Text color */
     cursor: pointer; /* Add a mouse pointer on hover */
     padding: 15px; /* Some padding */
-    border-radius: 10px; /* Rounded corners */
+    border-radius: 50%; /* Rounded corners */
     font-size: 18px; /* Increase font size */
   }
   
   #myBtn:hover {
-    background-color: #555; /* Add a dark-grey background on hover */
+    background-color:rgb(43,193,14);
+    background: linear-gradient(90deg, rgba(43,193,14,1) 0%, rgba(15,240,75,1) 35%, rgba(0,212,255,1) 100%);
   }
   
 .post {
   position: relative;
-  border: 2px solid black;
-  background-color: #ffce00;
-  border-radius: 5px;
+  border: 2px solid #B3B3B3;
+  background-color: #ffff;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  border-radius: 15px;
   padding: 16px;
-  margin: 16px 0;
+  margin: 20px auto;
+  /* margin: 16px 0;
   margin-left: 12%;
-  margin-right: 12%;
+  margin-right: 12%; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 33.25rem;
+  height: 35rem;
+
 
 }
 
