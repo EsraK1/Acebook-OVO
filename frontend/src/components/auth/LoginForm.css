@@ -16,10 +16,10 @@ body {
   flex-direction: column;
   margin: 0 auto;
   flex-wrap: wrap;
-  height: 200px;
-  gap: 10px;
-  width: 600px;
-  margin: 1px solid grey;
+  height: 400px;
+  gap: 5px;
+  width: 700px;
+  margin: 0 auto;
 }
 
 
@@ -29,26 +29,33 @@ body {
   background: rgb(43,193,14);
   background: linear-gradient(90deg, rgba(43,193,14,1) 0%, rgba(15,240,75,1) 35%, rgba(0,212,255,1) 100%); 
   flex: 50%;
-  width: 100px;
-  height: 80px;
-  order: 1;
- 
+  width: 350px;
+  height: 400px;
+  margin: 0 auto;
 }
 
 
 
 .column{
-  width: 100px;
-  height: 80px;
+  width: 350px;
+  height: 400px;
   flex: 50%;
-  order: 1;
+  margin: 0 auto;
   }
 
 
 form {
   width: 200px;
-  height: 200px;
-  flex-grow: 1;
-  order: 2;
+  height: 400px;
+  align-items: left;  
   
+}
+
+p {
+  text-align: center;
+}
+
+h2 {
+  text-align: left;
+  margin-left: 23%;
 }
