@@ -1,3 +1,14 @@
+::-webkit-input-placeholder {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.post-author {
+  vertical-align: super;
+  vertical-align: text-top;
+  vertical-align: top;
+  position:relative
+}
+
 .like {
   transform: translate(-60px, -170px);
   padding: 0.6em 2em;
@@ -12,6 +23,7 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  float:right
 }
 
 .like:before {

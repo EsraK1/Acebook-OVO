@@ -85,13 +85,9 @@ const Feed = ({ navigate }) => {
     if(token) {
       return(
         <>
-          <h2>Posts:</h2>
-            <button onClick={logout}>
-              Logout
-            </button>
           <div>
-                <form onSubmit={handleSubmit}>
-                  <textarea id="postarea" name="postarea" rows='4' cols='50' value={ post } onChange={handlePostChange} placeholder="Write your post here"></textarea>
+                <form className="postForm" onSubmit={handleSubmit}>
+                  <textarea id="postarea" name="postarea" value={ post } onChange={handlePostChange} placeholder="Write your post here"></textarea>
 
                   <input id='submit' type="submit" value="Add a post" />
                 </form>
