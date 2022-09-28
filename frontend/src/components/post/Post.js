@@ -135,7 +135,7 @@ const Post = (props) => {
     }
     const showHideCommentFormBtn = () => {
       if (showCommentForm) {
-        return(<button onClick={() => showCommentFormBtnHandle()}>Hide the comment entry form</button>)
+        return(<button className='' onClick={() => showCommentFormBtnHandle()}>Hide the comment entry form</button>)
       } else {
         return(<button onClick={() => showCommentFormBtnHandle()}>Write a comment!</button>)
       }
@@ -147,12 +147,28 @@ const Post = (props) => {
     // )}
   return(
       <article data-cy="post" className='post' key={ props.post._id }>
-        {avatarDisplay()}
-        <h2 className="post-author">{ props.post.postauthor.username }</h2>
-        <h2 className="post-date">{ date }</h2>
-        <p >{ props.post.message }</p>
-        {deleteBtnAppears()}
-        {likeBtn()}
+        <div className="row">
+          <div className="col col-left-1">
+            {avatarDisplay()}
+            <h2 className="post-author">{ props.post.postauthor.username }</h2>
+          </div>
+          <div className="col col-right-1">
+            <h2 className="post-date">{ date }</h2>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col col-left-1">
+            {likeBtn()}
+          </div>
+          <div className="col col-right-1">
+            {deleteBtnAppears()}
+          </div>
+        </div>
+
+
+        <p className='message'>{ props.post.message }</p>
+        
         {showHideCommentFormBtn()}
           <form onSubmit={handleSubmit} style={{display: showCommentForm ? 'block' : 'none'}}>
             <textarea id="postarea" name="postarea" rows='4' cols='50' value={ comment } onChange={handleCommentChange} placeholder="Write your comment here"></textarea>
