@@ -244,12 +244,14 @@ form {
 }
 
 #submit {
-  margin-top: 20px;
-  width: 200px;
-  border-radius: 30px;
+  margin-top: 10px;
+  border-radius:15px;
   background-color: #57cc99;
-  font-size: 18px;
+  font-size: 16px;
+  padding: 5px 5px;
+  text-align: center;
   cursor: pointer;
+  width: 145px;
 }
 
 #submit:hover {

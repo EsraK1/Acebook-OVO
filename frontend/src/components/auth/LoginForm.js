@@ -46,13 +46,18 @@ const LogInForm = ({ navigate }) => {
       <>
         {/* <h2>Welcome to Acebook</h2>
         <h3>Please login below:</h3> */}
-        <h2> Makers of friendships </h2>
+        <br></br>
+        <div id="welcome_message">
+          &#128512; Makers of friendships &#128512;
+        </div>
+        
+        <br></br>
         <div className='container'>
           <div id="pic"></div>
 
           <div className='column'>
             <form onSubmit={handleSubmit}>
-              <h4> Welcome back :) </h4>
+              <h4> Welcome back!</h4>
               <input placeholder='Email' id="email" type='text' value={ email } onChange={handleEmailChange} />
               <input placeholder='Password' id="password" type='password' value={ password } onChange={handlePasswordChange} />
               <input className='submit-button' id='submit' type="submit" value="Login" />

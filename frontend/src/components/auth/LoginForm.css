@@ -16,10 +16,11 @@ body {
   flex-direction: column;
   margin: 0 auto;
   flex-wrap: wrap;
-  height: 400px;
+  height: 300px;
   gap: 5px;
   width: 700px;
   margin: 0 auto;
+  position: relative;
 }
 
 
@@ -30,7 +31,7 @@ body {
   background: linear-gradient(90deg, rgba(43,193,14,1) 0%, rgba(15,240,75,1) 35%, rgba(0,212,255,1) 100%); 
   flex: 50%;
   width: 350px;
-  height: 400px;
+  height: 300px;
   margin: 0 auto;
 }
 
@@ -51,11 +52,35 @@ form {
   
 }
 
+#submit {
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: #57cc99;
+  font-size: 16px;
+  padding: 3px 3px;
+  text-align: center;
+  cursor: pointer;
+  width: 50%;
+}
+
+#submit:hover {
+background: rgb(43,193,14);
+background: linear-gradient(90deg, rgba(43,193,14,1) 0%, rgba(15,240,75,1) 35%, rgba(0,212,255,1) 100%);
+}
+
+#welcome_message {
+  text-align: auto;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 700px;
+  margin: 0 auto;
+  position: relative;
+  font-size: 26px;
+  font-weight: bold;
+}
+
 p {
   text-align: center;
 }
 
-h2 {
-  text-align: left;
-  margin-left: 23%;
-}
