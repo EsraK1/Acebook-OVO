@@ -18,7 +18,6 @@ const PostsController = {
       if (err) {
         throw err;
       }
-
       const token = await TokenGenerator.jsonwebtoken(req.user_id)
       res.status(201).json({ message: 'OK', token: token });
     });
@@ -32,7 +31,7 @@ const PostsController = {
       }
     }) },
 
-  Update: async (req, res) => {
+  Like: async (req, res) => {
     Post.findOneAndUpdate(
       { _id: req.body._id },
       { $push: { likes: req.body.userId } }
@@ -40,16 +39,21 @@ const PostsController = {
     res.status(200).json({ message: 'like added'})
   },
 
+  RemoveLike: async (req, res) => {
+    Post.findOneAndUpdate(
+      { _id: req.body._id },
+      { $pull: { likes: req.body.userId } }
+    ).exec()
+    res.status(200).json({ message: 'like removed'})
+  },
 
   Comment: async (req, res) => {
-    
-  
     Post.findByIdAndUpdate(
       { _id: req.body._id },
       { $push:{ comments:{ user_id: req.body.user_id, user_comment: req.body.user_comment }}}
-  ).exec()
-  const token = await TokenGenerator.jsonwebtoken(req.user_id)
-  res.status(200).json({message: "ok", token: token})
+    ).exec()
+    const token = await TokenGenerator.jsonwebtoken(req.user_id)
+    res.status(200).json({message: "ok", token: token})
   }
 };
 

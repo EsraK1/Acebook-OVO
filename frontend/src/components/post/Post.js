@@ -66,11 +66,12 @@ const Post = (props) => {
   }
 
   const likeBtn = () => {
-    if (props.post.likes.includes(props.userId)) {return (<button id={'likeButton'} className='like'  >{props.post.likes.length} ♥︎</button>)} else { 
+    if (props.post.likes.includes(props.userId)) {return (<button id={'likeButton'} className='like' onClick={() =>{removeLikeBtnSubmit()}} style={{color:'red'}}>{props.post.likes.length} ♥︎</button>)} else { 
       return(<button id={'likeButton'} onClick={() =>{likeBtnSubmit()}} className='like'>{props.post.likes.length} ♥︎</button>)
         
     }
   }
+
 
 
   const likeBtnSubmit = async () => { 
@@ -92,7 +93,26 @@ const Post = (props) => {
         .then(() => {props.counterChanger(prevState => ({count: prevState.counter + 1}))})
     }
 
-  const deleteBtnAppears = (() => {if (props.post.postauthor._id===props.userId) {return <button onClick= {deleteFunction} className={"like"} id={"deleteBtn"} title={"Delete post"}>Delete Post</button>}})
+    const removeLikeBtnSubmit = async () => { 
+      fetch( '/posts/removeLike/', {
+        method: 'put',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${props.token}`
+        },
+        body: JSON.stringify({ _id: props.post._id, userId: props.userId })
+      })
+        .then(response => {
+          if(response.status === 200) {
+            console.log(response)
+          } else {
+            alert('oops something is wrong')
+          }
+        })
+        .then(() => {props.counterChanger(prevState => ({count: prevState.counter + 1}))})
+    }
+
+  const deleteBtnAppears = (() => {if (props.post.postauthor._id===props.userId) {return <button onClick= {deleteFunction}  className={"like"} id={"deleteBtn"} title={"Delete post"}>Delete Post</button>}})
 
 
     function commentList(){
@@ -120,6 +140,7 @@ const Post = (props) => {
         <p >{ props.post.message }</p>
         {deleteBtnAppears()}
         {likeBtn()}
+
         
         <form onSubmit={handleSubmit}>
           <textarea id="postarea" name="postarea" rows='4' cols='50' value={ comment } onChange={handleCommentChange} placeholder="Write your comment here"></textarea>
