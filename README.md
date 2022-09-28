@@ -1,31 +1,26 @@
-# Acebook
+# Acebook-OVO
 
-In this project, you are tasked with working on an existing application. A significant part of the challenge will be to familiarise yourself with the codebase you've inherited, as you work to **improve and extend** it.
-
+The OVO team's Acebook, using a MERN stack.
 ## Trello Link
 
 https://trello.com/b/w0xoTYE5/acebook-ovo 
 
-## Videos
+## Miro Board
 
-These videos complement the docs below.
+https://miro.com/app/board/uXjVPUinYkY=/
 
-* [An overview of the app](https://youtu.be/meTABGgrO2c)
-* [The backend (api)](https://youtu.be/mFczOzWW3vo)
-* [Postman](https://youtu.be/VO_kinuJngA)
+## Pre-existing Features
 
-## Existing Features
-
-It's already possible for a user to:
+It was already possible for a user to:
 - Sign up
 - Sign in
 - Sign out
 - View a list of posts
 
-At the moment, it's not possible to create posts via the user interface but there are some failing tests for that feature, so it's a good place to start you work.
+All existed as routes and the most very basic appearance in the frontend.
 ## Technologies
 
-Here's an overview of the technologies used to build this template application. You don't need to do a deep dive on each one right now. Instead, try to get a feeling for the big picture and then dive into the details when a specific task pushes you in that direction.
+This project used a 'MERN' stack
 
 ### **M** is for MongoDB
 [MongoDB](https://www.mongodb.com/) is a _NoSQL_ database program that stores data in collections of JSON-like structures, rather than in tables. The application interracts with MongoDB using a tool called Mongoose.
@@ -47,6 +42,9 @@ We also used...
 - [Handlebars](https://handlebarsjs.com/) for the `home` template.
 - [ESLint](https://eslint.org) for linting.
 - [Nodemon](https://nodemon.io/) to reload the server automatically.
+- [JWT](https://jwt.io/) for security.
+- [Heroku](https://www.heroku.com) for backend and frontend hosting.
+- [MongoDB-Atlas](https://www.mongodb.com/atlas/database) for database hosting.
 
 ## Architecture
 
@@ -126,13 +124,11 @@ A JSON Web Token, or JWT, is a token that comprises three parts
 The signature is created using a 'secret', which must be kept private (i.e. not put on GitHub) otherwise nefarious internet users could start to issue tokens for your application.
 
 Here, we've used an environment variable called `JWT_SECRET`, which you'll see used in the commands to start the application and run the tests (below). You can change the value of that environment variable to anything you like.
-## Card wall
-
-REPLACE THIS TEXT WITH A LINK TO YOUR CARD WALL
 
 ## Quickstart
 
-### Install Node.js
+The application is set up on Heroku with a [frontend](book-ovo-frontend.herokuapp.com) and a [backend](book-ovo-frontend.herokuapp.com). Alternatively follow the instructions
+### If running the project locally, do the following:
 
 1. Install Node Version Manager (NVM)
    ```
@@ -145,26 +141,25 @@ REPLACE THIS TEXT WITH A LINK TO YOUR CARD WALL
    nvm install 18
    ```
 
-### Set up your project
+### Cloning and setting up the project to run locally:
 
-1. Fork this repository
-2. Rename your fork to `acebook-<team name>`
-3. Clone your fork to your local machine
-4. Install Node.js dependencies for both FE and BE (API)
+
+1. Clone our repo to your local machine
+2. Install Node.js dependencies for both FE and BE (API)
    ```
    ; cd api
    ; npm install
    ; cd ../frontend
    ; npm install
    ```
-5. Install an ESLint plugin for your editor. For example: [linter-eslint](https://github.com/AtomLinter/linter-eslint) for Atom.
-6. Install MongoDB
+3. Install an ESLint plugin for your editor. For example: [linter-eslint](https://github.com/AtomLinter/linter-eslint) for Atom.
+4. Install MongoDB
    ```
    brew tap mongodb/brew
    brew install mongodb-community@5.0
    ```
    *Note:* If you see a message that says `If you need to have mongodb-community@5.0 first in your PATH, run:`, follow the instruction. Restart your terminal after this.
-7. Start MongoDB
+5. Start MongoDB
    ```
    brew services start mongodb-community@5.0
    ```
@@ -188,11 +183,7 @@ REPLACE THIS TEXT WITH A LINK TO YOUR CARD WALL
   ; npm start
   ```
 
-You should now be able to open your browser and go to `http://localhost:3000/signup` to create a new user.
-
-Then, after signing up, you should be able to log in by going to `http://localhost:3000/login`.
-
-After logging in, you won't see much but you can create posts using PostMan and they shoud then show up in the browser if you refresh the page.
+You should now be able to open your browser and go to `http://localhost:3000/` to view our welcome page. You should sign in to view the main feed and create posts.
 
 ### Testing
 
