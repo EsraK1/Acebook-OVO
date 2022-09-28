@@ -52,6 +52,12 @@ form {
   
 }
 
+input {
+  width: 200px;
+  height: 40px;
+
+}
+
 #submit {
   margin-top: 10px;
   border-radius: 5px;
@@ -82,5 +88,6 @@ background: linear-gradient(90deg, rgba(43,193,14,1) 0%, rgba(15,240,75,1) 35%, 
 
 p {
   text-align: center;
+  width: 200px;
 }
 

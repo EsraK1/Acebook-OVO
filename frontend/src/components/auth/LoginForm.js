@@ -57,7 +57,7 @@ const LogInForm = ({ navigate }) => {
 
           <div className='column'>
             <form onSubmit={handleSubmit}>
-              <h4> Welcome back!</h4>
+              <h3> Welcome back!</h3>
               <input placeholder='Email' id="email" type='text' value={ email } onChange={handleEmailChange} />
               <input placeholder='Password' id="password" type='password' value={ password } onChange={handlePasswordChange} />
               <input className='submit-button' id='submit' type="submit" value="Login" />
