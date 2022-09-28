@@ -10,3 +10,8 @@
   font-size: 25px;
   margin-top: 10%;
 }
+
+.root {
+  --green: rgb(43,193,14);
+  --greenblue : linear-gradient(90deg, rgba(43,193,14,1) 0%, rgba(15,240,75,1) 35%, rgba(0,212,255,1) 100%);
+}
