@@ -1,6 +1,10 @@
+*{
+  font-family: 'Libre Franklin', sans-serif;
+}
+
 h1 {
     font-style: italic;
-    color: blue;
+    font: blue;
   }
   
   .navbar {
