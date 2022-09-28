@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap');
+
+
+*{
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+.root{
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 25px;
+  margin-top: 10%;
+}
