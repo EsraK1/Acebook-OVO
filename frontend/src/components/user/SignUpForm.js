@@ -5,6 +5,7 @@ const SignUpForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [img, setImage] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -14,7 +15,7 @@ const SignUpForm = ({ navigate }) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email: email, password: password, username: username })
+      body: JSON.stringify({ email: email, password: password, username: username, img: img})
     })
       .then(response => {
         if(response.status === 201) {
@@ -37,12 +38,17 @@ const SignUpForm = ({ navigate }) => {
     setUsername(event.target.value)
   }
 
+  const handleImgChange = (event) => {
+    setImage(event.target.value)
+  }
+
 
     return (
       <form onSubmit={handleSubmit}>
           <input placeholder="Email" id="email" type='text' value={ email } onChange={handleEmailChange} />
           <input placeholder="Password" id="password" type='password' value={ password } onChange={handlePasswordChange} />
           <input placeholder="Name" id="username" type='text' value={ username } onChange={handleUsernameChange} />
+          <input placeholder="Avatar URL" id="img" type='url' value={ img } onChange={handleImgChange} />
         <input id='submit' type="submit" value="Submit" />
       </form>
     );
