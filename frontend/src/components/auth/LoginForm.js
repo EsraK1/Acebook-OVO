@@ -47,14 +47,12 @@ const LogInForm = ({ navigate }) => {
         {/* <h2>Welcome to Acebook</h2>
         <h3>Please login below:</h3> */}
         <br></br>
-        <div id="welcome_message">
-          &#128512; Makers of friendships &#128512;
-        </div>
+        
         
         <br></br>
         <div className='container'>
           <div id="pic"></div>
-
+          
           <div className='column'>
             <form onSubmit={handleSubmit}>
               <h3> Welcome back!</h3>
@@ -65,7 +63,12 @@ const LogInForm = ({ navigate }) => {
               <p>If you don't have an account <a href="/signup">sign up</a> here.</p>
             </form>
           </div>
-
+        </div>
+        <br></br>
+        <br></br>
+        <br></br>
+        <div id="welcome_message">
+          &#128512; You can't make an omlette without breaking eggs &#128512;
         </div>
       </>
     );
