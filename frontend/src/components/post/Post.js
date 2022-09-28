@@ -67,7 +67,7 @@ const Post = (props) => {
   }
 
   const likeBtn = () => {
-    if (props.post.likes.includes(props.userId)) {return (<button id={'likeButton'} className='like'  >{props.post.likes.length} ♥︎</button>)} else { 
+    if (props.post.likes.includes(props.userId)) {return (<button id={'likeButton'} className='like' onClick={() =>{removeLikeBtnSubmit()}}  >{props.post.likes.length} ♥︎</button>)} else { 
       return(<button id={'likeButton'} onClick={() =>{likeBtnSubmit()}} className='like'>{props.post.likes.length} ♥︎</button>)
         
     }
@@ -76,6 +76,25 @@ const Post = (props) => {
 
   const likeBtnSubmit = async () => { 
       fetch( '/posts/like/', {
+        method: 'put',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${props.token}`
+        },
+        body: JSON.stringify({ _id: props.post._id, userId: props.userId })
+      })
+        .then(response => {
+          if(response.status === 200) {
+            console.log(response)
+          } else {
+            alert('oops something is wrong')
+          }
+        })
+        .then(() => {props.counterChanger(prevState => ({count: prevState.counter + 1}))})
+    }
+
+    const removeLikeBtnSubmit = async () => { 
+      fetch( '/posts/RemoveLike/', {
         method: 'put',
         headers: {
           'Content-Type': 'application/json',
