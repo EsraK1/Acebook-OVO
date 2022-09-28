@@ -96,13 +96,12 @@ const Post = (props) => {
 
 
     function commentList(){
-      if(props.post.comments.length > 0) {
+      if(props.post.comments.length > 0) { 
         let comment = props.post.comments.map((element, index) => (
           <>
-            <h3>Comments:</h3>
-            <p key={ element.user_id + props.post._id + index }>
-            "{ element.user_comment }"
-            </p>
+              <p className="commentPara" key={ element.user_id + props.post._id + index }>
+              "{ element.user_comment }"
+              </p> 
           </>
       ))
       return comment 
@@ -122,11 +121,13 @@ const Post = (props) => {
         {likeBtn()}
         
         <form onSubmit={handleSubmit}>
-          <textarea id="postarea" name="postarea" rows='4' cols='50' value={ comment } onChange={handleCommentChange} placeholder="Write your comment here"></textarea>
-          <input id='submit' type="submit" value="Add a post" />
+          <textarea id="postarea" name="postarea" value={ comment } onChange={handleCommentChange} placeholder="Write your comment here"></textarea>
+          <input id='submit' type="submit" value="Add a comment" />
         </form>
 
-        { commentList() }
+        <div className="commentDiv">
+          { commentList() }
+        </div>
 
       </article>
   )
