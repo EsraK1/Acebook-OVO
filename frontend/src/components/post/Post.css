@@ -225,13 +225,12 @@ form {
   align-items: center;
   justify-content: center;
   border-radius: 30px;
-
  }
 
 #postarea {
   height: 10rem;
   border-color: #EAEAEA;
-  border-radius: 30px;
+  border-radius: 15px;
   font-size: 15px;
 }
 
@@ -247,4 +246,13 @@ form {
 #submit:hover {
 background: rgb(43,193,14);
 background: linear-gradient(90deg, rgba(43,193,14,1) 0%, rgba(15,240,75,1) 35%, rgba(0,212,255,1) 100%);
+}
+
+.commentDiv {
+  border: 1px solid black;
+  border-radius: 10px;
+  border-color: #EAEAEA;
+  height: 180px;
+  width: 460px;
+  overflow: auto;
 }
