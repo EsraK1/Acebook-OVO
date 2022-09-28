@@ -40,6 +40,14 @@ const PostsController = {
     res.status(200).json({ message: 'like added'})
   },
 
+  RemoveLike: async (req, res) => {
+    Post.findOneAndUpdate(
+      { _id: req.body._id },
+      { $pull: { likes: req.body.userId } }
+    ).exec()
+    res.status(200).json({ message: 'like removed'})
+  },
+
 
   Comment: async (req, res) => {
     
