@@ -5,6 +5,10 @@ const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  function refreshPage(){ 
+    window.location.reload();
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -25,6 +29,7 @@ const LogInForm = ({ navigate }) => {
       window.localStorage.setItem("token", data.token)
       navigate('/posts');
     }
+    refreshPage()
   }
 
   const handleEmailChange = (event) => {
