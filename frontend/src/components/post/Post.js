@@ -4,6 +4,7 @@ import './Post.css'
 const Post = (props) => {
 
   const [comment, setComment] = useState();
+  const [showCommentForm, setShowCommentForm] = useState(false);
 
   const avatarDisplay = () => {
     if (props.post.postauthor.img === "") { return (
@@ -109,6 +110,18 @@ const Post = (props) => {
       }
     }
 
+    const showCommentFormBtnHandle = () => {
+      setShowCommentForm(current => !current)
+    }
+    const showHideCommentFormBtn = () => {
+      if (showCommentForm) {
+        return(<button onClick={() => showCommentFormBtnHandle()}>Hide the comment entry form</button>)
+      } else {
+        return(<button onClick={() => showCommentFormBtnHandle()}>Write a comment!</button>)
+      }
+    }
+
+
     // {posts.map(
     //   (post) => ( <Post post={ post } key={ post._id } userId={ userId } token={ token } /> )
     // )}
@@ -120,12 +133,11 @@ const Post = (props) => {
         <p >{ props.post.message }</p>
         {deleteBtnAppears()}
         {likeBtn()}
-        
-        <form onSubmit={handleSubmit}>
-          <textarea id="postarea" name="postarea" rows='4' cols='50' value={ comment } onChange={handleCommentChange} placeholder="Write your comment here"></textarea>
-          <input id='submit' type="submit" value="Add a post" />
-        </form>
-
+        {showHideCommentFormBtn()}
+          <form onSubmit={handleSubmit} style={{display: showCommentForm ? 'block' : 'none'}}>
+            <textarea id="postarea" name="postarea" rows='4' cols='50' value={ comment } onChange={handleCommentChange} placeholder="Write your comment here"></textarea>
+            <input id='submit' type="submit" value="Add a post" />
+          </form>
         { commentList() }
 
       </article>
