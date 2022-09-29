@@ -24,6 +24,13 @@ describe("/posts", () => {
   })
 
   describe("POST, when token is present", () => {
+
+    test("responds with a 404", async () => {
+      let response = await request(app)
+        .post("/postss")
+      expect(response.status).toEqual(404);
+    });
+
     test("responds with a 201", async () => {
       let response = await request(app)
         .post("/posts")
@@ -53,6 +60,77 @@ describe("/posts", () => {
     });  
   });
   
+  describe("Deletes an existing post", () => {
+    test("creates a new post and deletes it", async () => {
+      await request(app)
+        .post("/posts")
+        .set("Authorization", `Bearer ${token}`)
+        .send({ message: "hello world", token: token });
+      let posts = await Post.find();
+      await request(app)
+        .delete("/posts")
+        .set("Authorization", `Bearer ${token}`)
+        .send({ _id: posts[0]._id, token: token });
+      posts = await Post.find();
+      expect(posts.length).toEqual(0);
+    });
+  })
+
+  describe("Likes an existing post", () => {
+    test("creates a new post and likes it", async () => {
+      await request(app)
+        .post("/posts")
+        .set("Authorization", `Bearer ${token}`)
+        .send({ message: "hello world", token: token });
+      let posts = await Post.find();
+      let userId = JWT.decode(token, process.env.JWT_SECRET).user_id
+      await request(app)
+        .put("/posts/like")
+        .set("Authorization", `Bearer ${token}`)
+        .send({ _id: posts[0]._id, userId: userId });
+      posts = await Post.find();
+      expect(posts[0].likes.length).toEqual(1);
+    });
+  })
+
+  describe("Removes a like from an existing post", () => {
+    test("creates a new post and likes it", async () => {
+      await request(app)
+        .post("/posts")
+        .set("Authorization", `Bearer ${token}`)
+        .send({ message: "hello world", token: token });
+      let posts = await Post.find();
+      let userId = JWT.decode(token, process.env.JWT_SECRET).user_id
+      await request(app)
+        .put("/posts/like")
+        .set("Authorization", `Bearer ${token}`)
+        .send({ _id: posts[0]._id, userId: userId });
+      await request(app)
+        .put("/posts/RemoveLike")
+        .set("Authorization", `Bearer ${token}`)
+        .send({ _id: posts[0]._id, userId: userId });
+      posts = await Post.find();
+      expect(posts[0].likes.length).toEqual(0);
+    });
+  })
+
+  describe("Adds a comment to an existing post", () => {
+    test("creates a new post and adds a comment to it", async () => {
+      await request(app)
+        .post("/posts")
+        .set("Authorization", `Bearer ${token}`)
+        .send({ message: "hello world", token: token });
+      let posts = await Post.find();
+      let userId = JWT.decode(token, process.env.JWT_SECRET).user_id
+      await request(app)
+        .put("/posts/comment")
+        .set("Authorization", `Bearer ${token}`)
+        .send({ _id: posts[0]._id, user_id: userId, user_comment: "Test comment" });
+      posts = await Post.find();
+      expect(posts[0].comments.length).toEqual(1);
+    });
+  })
+
   describe("POST, when token is missing", () => {
     test("responds with a 401", async () => {
       let response = await request(app)

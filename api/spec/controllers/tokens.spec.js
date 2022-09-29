@@ -14,6 +14,8 @@ describe("/tokens", () => {
   })
 
   test("a token is returned when creds are valid", async () => {
+    const user = new User({ email: "test@test.com", password: "12345678", username: "test" })
+    user.save()
     let response = await request(app)
       .post("/tokens")
       .send({email: "test@test.com", password: "12345678"})
