@@ -135,7 +135,7 @@ const Post = (props) => {
     }
     const showHideCommentFormBtn = () => {
       if (showCommentForm) {
-        return(<button className='' onClick={() => showCommentFormBtnHandle()}>Hide the comment entry form</button>)
+        return(<button onClick={() => showCommentFormBtnHandle()}>Hide the comment entry form</button>)
       } else {
         return(<button onClick={() => showCommentFormBtnHandle()}>Write a comment!</button>)
       }
@@ -147,33 +147,44 @@ const Post = (props) => {
     // )}
   return(
       <article data-cy="post" className='post' key={ props.post._id }>
-        <div className="row">
-          <div className="col col-left-1">
+        <div className="container-1">
+          <div className="con-1-1">
             {avatarDisplay()}
-            <h2 className="post-author">{ props.post.postauthor.username }</h2>
-          </div>
-          <div className="col col-right-1">
+          </div>     
+          <div className="con-1-2">
             <h2 className="post-date">{ date }</h2>
           </div>
         </div>
 
-        <div className="row">
-          <div className="col col-left-1">
+        <div className="container-2">
+            <h2 className="post-author con-2-1">{ props.post.postauthor.username }</h2>
+        </div>
+        
+        <div className="container-3">
+          <div className="con-3-1">
             {likeBtn()}
           </div>
-          <div className="col col-right-1">
+          <div className="con-3-2">
             {deleteBtnAppears()}
-          </div>
+          </div> 
         </div>
 
 
-        <p className='message'>{ props.post.message }</p>
+       <div className="container-4">
+          <p className='message con-4-1'>{ props.post.message }</p>
+       </div>
+        
         
         {showHideCommentFormBtn()}
-          <form onSubmit={handleSubmit} style={{display: showCommentForm ? 'block' : 'none'}}>
-            <textarea id="postarea" name="postarea" rows='4' cols='50' value={ comment } onChange={handleCommentChange} placeholder="Write your comment here"></textarea>
-            <input id='submit' type="submit" value="Add a post" />
-          </form>
+        <br />
+        <form onSubmit={handleSubmit} style={{display: showCommentForm ? 'block' : 'none'}}>
+          <textarea id="postarea" name="postarea" rows='4' cols='50' value={ comment } onChange={handleCommentChange} placeholder="Write your comment here"></textarea>
+          <div className="container-5">
+            <input className='addComment' id='submit' type="submit" value="Add Comment" />
+          </div>
+        </form>
+        
+
         <div className="commentDiv">
           { commentList() }
         </div>
