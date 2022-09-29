@@ -13,26 +13,34 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 50px auto;
+  margin: 100px auto;
   flex-wrap: wrap;
   width: 700px;
   height: 400px;
-  border: 1px solid grey;
+  border: 1px solid #A9A9A9;
+  box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, .1);
+ 
 }
 
 
 
 .pic {
 
-  
-    --mask:
+  background-image: url("https://media.giphy.com/media/XcMSqKXh4MDZ6Xg7TS/giphy.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+ 
+ 
+    /* --mask:
       radial-gradient(45.25px at calc(100% - 64.00px) 50%,#000 99%,#0000 101%) 0 calc(50% - 64px)/100% 128px,
       radial-gradient(45.25px at calc(100% + 32.00px) 50%,#0000 99%,#000 101%) calc(100% - 32px) 50%/100% 128px repeat-y;
     -webkit-mask: var(--mask);
             mask: var(--mask);
   
             background: rgb(34,193,195);
-            background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(119,159,241,1) 100%);
+            background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(119,159,241,1) 100%); */
+
   flex-wrap: 1;
   flex: 50%;
   width: 200px;
@@ -61,10 +69,10 @@ body {
   }
 
   a {
-    text-decoration: none;
     font-weight: 700;
     color: #000;
     cursor: pointer;
+    font-size: 19px;
   }
 
   a:hover {

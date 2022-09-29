@@ -1,3 +1,38 @@
 *{
   font-family: 'Libre Franklin', sans-serif;
 }
+
+body {
+  background-image: url("./waves.png");
+  background-repeat: repeat-y;
+  background-size: 100%;
+  object-fit: fill;
+}
+
+a:hover {
+  background: #d1e7db;
+  color: #444444;
+}
+
+.formContainer {
+
+  background: #d1e7db;
+  margin: 100px auto;
+  padding: 20px;
+  border: 1px solid #A9A9A9;
+  outline: transparent;
+  border-radius: 15px;
+  width: 400px;
+  height: 400px;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+
+
+}
+
+#username, #img {
+  width: 200px;
+  height: 35px;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 15px;
+}
