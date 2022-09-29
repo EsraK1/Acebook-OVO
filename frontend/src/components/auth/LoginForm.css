@@ -1,4 +1,4 @@
-*{
+* {
   font-family: 'Libre Franklin', sans-serif;
 }
 
@@ -13,42 +13,60 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  margin: 0 auto;
+  margin: 50px auto;
   flex-wrap: wrap;
-  height: 200px;
-  gap: 10px;
-  width: 600px;
-  margin: 1px solid grey;
+  width: 700px;
+  height: 400px;
+  border: 1px solid grey;
 }
 
 
 
-#pic {
+.pic {
 
-  background: rgb(43,193,14);
-  background: linear-gradient(90deg, rgba(43,193,14,1) 0%, rgba(15,240,75,1) 35%, rgba(0,212,255,1) 100%); 
+  
+    --mask:
+      radial-gradient(45.25px at calc(100% - 64.00px) 50%,#000 99%,#0000 101%) 0 calc(50% - 64px)/100% 128px,
+      radial-gradient(45.25px at calc(100% + 32.00px) 50%,#0000 99%,#000 101%) calc(100% - 32px) 50%/100% 128px repeat-y;
+    -webkit-mask: var(--mask);
+            mask: var(--mask);
+  
+            background: rgb(34,193,195);
+            background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(119,159,241,1) 100%);
+  flex-wrap: 1;
   flex: 50%;
-  width: 100px;
-  height: 80px;
+  width: 200px;
+  height: 400px;
   order: 1;
  
 }
 
+#email, #password, #submit {
 
+  width: 200px;
+  height: 35px;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 15px;
+}
 
-.column{
-  width: 100px;
-  height: 80px;
+.column {
+
+  flex-wrap: 2;
   flex: 50%;
-  order: 1;
+  width: 200px;
+  height: 120x;
+  flex: 50%;
+  order: 2;
   }
 
+  a {
+    text-decoration: none;
+    font-weight: 700;
+    color: #000;
+    cursor: pointer;
+  }
 
-form {
-  width: 200px;
-  height: 200px;
-  flex-grow: 1;
-  order: 2;
-  
-}
+  a:hover {
+    color: green;
+  }

@@ -47,11 +47,10 @@ const LogInForm = ({ navigate }) => {
         {/* <h2>Welcome to Acebook</h2>
         <h3>Please login below:</h3> */}
         <div className='container'>
-       
-      <h1> Acebook- OVO</h1>
-      <br></br>
 
-        <div id="pic"></div>
+        <div className="pic">
+       
+        </div>
 
         <div className='column'>
           <form onSubmit={handleSubmit}>
@@ -59,9 +58,8 @@ const LogInForm = ({ navigate }) => {
           <input placeholder='Email' id="email" type='text' value={ email } onChange={handleEmailChange} />
           <input placeholder='Password' id="password" type='password' value={ password } onChange={handlePasswordChange} />
           <input role='submit-button' id='submit' type="submit" value="Submit" />
-         </form>
-         <br></br>
           <p>If you don't have an account <a href="/signup">sign up</a> here.</p>
+         </form>
           </div>
 
         </div>
