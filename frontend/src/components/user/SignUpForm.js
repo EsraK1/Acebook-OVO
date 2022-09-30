@@ -45,6 +45,8 @@ const SignUpForm = ({ navigate }) => {
 
 
     return (
+
+      <div className='formContainer'>
       <form onSubmit={handleSubmit}>
         <br />
           <input placeholder="Email" id="email" type='text' value={ email } onChange={handleEmailChange} />
@@ -53,6 +55,7 @@ const SignUpForm = ({ navigate }) => {
           <input placeholder="Avatar URL" id="img" type='url' value={ img } onChange={handleImgChange} />
         <input id='submit' type="submit" value="Submit" />
       </form>
+      </div>
     );
 }
 

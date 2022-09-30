@@ -7,7 +7,9 @@
   font-family: 'Libre Franklin', sans-serif;
 }
 
-.like {
+
+
+.like , button{
   /* transform: translate(-60px, -170px); */
   padding: 0.6em 2em;
   border: none;
@@ -217,6 +219,7 @@ form {
   border-color: #EAEAEA;
   border-radius: 15px;
   font-size: 15px;
+
 }
 
 #submit {
