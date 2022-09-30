@@ -39,7 +39,6 @@ We also used...
 - [Jest](https://jestjs.io/) for unit testing on the back end
 - [Cypress](https://www.cypress.io/) for end-to-end testing and component testing, on the front end
 - [Mongoose](https://mongoosejs.com) to model objects in MongoDB.
-- [Handlebars](https://handlebarsjs.com/) for the `home` template.
 - [ESLint](https://eslint.org) for linting.
 - [Nodemon](https://nodemon.io/) to reload the server automatically.
 - [JWT](https://jwt.io/) for security.
