@@ -22,7 +22,7 @@ const LogInForm = ({ navigate }) => {
     })
 
     if(response.status !== 201) {
-      console.log("yay")
+     alert("The login credentials are not valid. Please try again or sign up if you don't have an account.")
       navigate('/login')
     } else {
       console.log("oop")
